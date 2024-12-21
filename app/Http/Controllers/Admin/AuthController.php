@@ -15,7 +15,7 @@ class AuthController extends Controller
     public function createCustomer()
     {
         $user = new User();
-        $user->name  = 'Amin';
+        $user->name  = 'Admin';
         $user->email = 'admin@gmail.com';
         $user->password = Hash::make('123456');
         $user->save();

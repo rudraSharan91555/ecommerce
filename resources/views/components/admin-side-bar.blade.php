@@ -2,10 +2,10 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-          <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon" style="width: 100px; height: auto;">
+          <img src="{{ asset('assets/images/vm_logo.png') }}" class="logo-icon" alt="logo icon" style="width: 100px; height: auto;">
         </div>
         <div>
-            <h4 class="logo-text">Rocker</h4>
+            <h4 class="logo-text">{{ Auth::user()->name }}</h4>
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
         </div>
@@ -13,7 +13,7 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li>
-            <a href="#" class="has-arrow">
+            <a href="{{url('/')}}" class="has-arrow">
                 <div class=""><i class='bx bx-home-circle'></i>
                 </div>
                 <div class="menu-title">Dashboard</div>
@@ -47,9 +47,9 @@
         </li>
         
         
-        <li class="menu-label">Pages</li>
+        <li class="user-profile.html">Pages</li>
         <li>
-            <a href="#">
+            <a href="{{ route('profile.index') }}">
                 <div class="parent-icon"><i class="bx bx-user-circle"></i>
                 </div>
                 <div class="menu-title">User Profile</div>
