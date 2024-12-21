@@ -80,9 +80,37 @@
 </body>
 
 
-
-
 <script>
+    $('#formSubmit').submit(function(e) {
+        e.preventDefault(); // Prevent default form submission
+        if ($(this).parsley().validate()) { // Validate form with Parsley.js
+            var url = "{{ url('login_user') }}"; // URL to handle the login
+            $.ajax({
+                url: url,
+                data: $('#formSubmit').serialize(), // Serialize the form data
+                type: 'POST',
+                success: function(result) {
+                    if (result.status == 200) {
+                        // If login is successful, redirect to the dashboard or home page
+                        alert(result.message); // Show success message
+                        window.location.href = "/"; // Redirect to the admin index page
+                    } else {
+                        // Show an error message if login failed
+                        alert(result.message || 'Login failed');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Handle AJAX error
+                    console.log('AJAX error: ' + status + error);
+                    alert('There was an error. Please try again later.');
+                }
+            });
+        }
+    });
+</script>
+
+
+{{-- <script>
     $('#formSubmit').submit(function(e) {
         e.preventDefault(); 
         if ($(this).parsley().validate()) { 
@@ -106,7 +134,7 @@
             });
         }
     });
-</script>
+</script> --}}
 
 
 </html>
